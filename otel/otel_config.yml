@@ -1,0 +1,20 @@
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: otelcol:4317
+
+exporters:
+  prometheusremotewrite:
+    endpoint: <ENDPOINT>
+
+processors:
+  batch:
+
+service:
+  pipelines:
+    metrics:
+      receivers: [otlp]
+      processors: []
+      exporters: [prometheusremotewrite]
+
